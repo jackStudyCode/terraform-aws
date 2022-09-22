@@ -1,14 +1,14 @@
 
 locals {
-    lambda_zip_location = "hello.zip"
+    lambda_zip_location = "outputs/hello.zip"
 }
 
 ##Zip the function to be run at function App.
 
 data "archive_file" "init" {
   type        = "zip"
-  source_file = "$hello.js"
-  output_path = "hello.zip"
+  source_file = "hello.js"
+  output_path = "${local.lambda_zip_location}"
 }
 
 ## S3 Bucket
@@ -43,7 +43,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
 
 ## AWS lambda functions
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "hello.zip"
+  filename      = "${local.lambda_zip_location}"
   function_name = "hello"
   ##s3_bucket     = aws_s3_bucket.function-bucket.id
   ##s3_key        = "hello.zip"
