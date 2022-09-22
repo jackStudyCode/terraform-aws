@@ -8,8 +8,8 @@ data "archive_file" "init" {
 
 ## S3 Bucket
 resource "aws_s3_bucket" "function_bucket" {
-  bucket = "function_bucket001"
-  acl    = "private"
+  bucket            = "function_bucket001"
+  aws_s3_bucket_acl = "private"
 
   tags = {
     Name = "function_bucket-1"
