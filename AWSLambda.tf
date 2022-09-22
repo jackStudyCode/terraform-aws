@@ -13,7 +13,7 @@ data "archive_file" "init" {
 
 ## S3 Bucket
 resource "aws_s3_bucket" "function-bucket" {
-  bucket = "lambda-function-bucket"
+  bucket = "lambda-function-bucket-zixun"
 
   tags = {
     Name = "function-bucket-1"
