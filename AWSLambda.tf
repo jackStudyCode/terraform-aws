@@ -6,7 +6,7 @@ data "archive_file" "init" {
   output_path = "${path.module}/hello.zip"
 }
 
-## S3 Bucket
+##  S3 Bucket
 ##resource "aws_s3_bucket" "function-bucket" {
   ##bucket            = "lambda-function-bucket"
 ##
@@ -15,7 +15,7 @@ data "archive_file" "init" {
   ##}
 ##}
 
-## Upload zip file to s3 bucket
+##  Upload zip file to s3 bucket
 ##resource "aws_s3_object" "object" {
   ##bucket = aws_s3_bucket.function-bucket.id
   ##key = "hello.zip"
