@@ -16,7 +16,7 @@ resource "aws_s3_bucket" "function_bucket" {
 }
 
 ## Upload zip file to s3 bucket
-resource "aws_s3_bucket_object" "object" {
+resource "aws_s3_object" "object" {
   bucket = aws_s3_bucket.function_bucket.id
   key = "hello.zip"
   source = "${path.module}/hello.zip"
