@@ -1,9 +1,14 @@
+
+locals {
+    lambda_zip_location = "outputs/hello.zip"
+}
+
 ##Zip the function to be run at function App.
 
 data "archive_file" "init" {
   type        = "zip"
-  source_file = "${path.module}/hello.js"
-  output_path = "${path.module}/hello.zip"
+  source_file = "hello.js"
+  output_path = "${local.lambda_zip_location}"
 }
 
 ## S3 Bucket
@@ -19,7 +24,7 @@ data "archive_file" "init" {
 ##resource "aws_s3_object" "object" {
   ##bucket = aws_s3_bucket.function-bucket.id
   ##key = "hello.zip"
-  ##source = "${path.module}/hello.zip"
+  ##source = "hello.zip"
 ##}
 
 ## IAM role for lambda
@@ -38,11 +43,12 @@ resource "aws_iam_role_policy" "lambda_policy" {
 
 ## AWS lambda functions
 resource "aws_lambda_function" "test_lambda" {
-  filename      = "${path.module}/hello.zip"
+  filename      = "${local.lambda_zip_location}"
   function_name = "hello"
   ##s3_bucket     = aws_s3_bucket.function-bucket.id
   ##s3_key        = "hello.zip"
   role          = "arn:aws:iam::137312912338:role/service-role/game-server-role"
   handler       = "hello.handler"
+  ##source_code_hash = "${filebase64sha256(local.lambda_zip_location)}"
   runtime       = "nodejs16.x"
 }
