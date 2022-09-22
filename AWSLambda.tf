@@ -8,8 +8,7 @@ data "archive_file" "init" {
 
 ## S3 Bucket
 resource "aws_s3_bucket" "function_bucket" {
-  bucket = "function_bucket001"
-  acl    = "private"
+  bucket            = "function_bucket001"
 
   tags = {
     Name = "function_bucket-1"
@@ -17,7 +16,7 @@ resource "aws_s3_bucket" "function_bucket" {
 }
 
 ## Upload zip file to s3 bucket
-resource "aws_s3_bucket_object" "object" {
+resource "aws_s3_object" "object" {
   bucket = aws_s3_bucket.function_bucket.id
   key = "hello.zip"
   source = "${path.module}/hello.zip"
