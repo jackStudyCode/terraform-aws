@@ -8,7 +8,7 @@ data "archive_file" "init" {
 
 ## S3 Bucket
 resource "aws_s3_bucket" "function_bucket" {
-  bucket            = "function_bucket001"
+  bucket            = "lambda_function_bucket"
 
   tags = {
     Name = "function_bucket-1"
