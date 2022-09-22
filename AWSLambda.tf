@@ -1,3 +1,8 @@
+
+locals {
+    lambda_zip_location = "hello.zip"
+}
+
 ##Zip the function to be run at function App.
 
 data "archive_file" "init" {
@@ -44,6 +49,6 @@ resource "aws_lambda_function" "test_lambda" {
   ##s3_key        = "hello.zip"
   role          = "arn:aws:iam::137312912338:role/service-role/game-server-role"
   handler       = "hello.handler"
-  source_code_hash = "${filebase64sha256("hello.zip")}"
+  source_code_hash = "${filebase64sha256(lambda_zip_location)}"
   runtime       = "nodejs16.x"
 }
