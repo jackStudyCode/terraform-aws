@@ -41,6 +41,11 @@ resource "aws_iam_role_policy" "lambda_policy" {
 }
 
 
+##data "aws_s3_bucket_object" "hash" {
+  ##bucket = aws_s3_bucket.function-bucket.id
+  ##key    = ${"hello.zip"}
+##}
+
 ## AWS lambda functions
 resource "aws_lambda_function" "test_lambda" {
   ##filename      = "${local.lambda_zip_location}"
@@ -50,6 +55,7 @@ resource "aws_lambda_function" "test_lambda" {
   role          = "arn:aws:iam::137312912338:role/service-role/game-server-role"
   handler       = "hello.handler"
   ##source_code_hash = "${filebase64sha256(local.lambda_zip_location)}"
-  source_code_hash = data.aws_s3_object.hash.body
+  ##source_code_hash = data.aws_s3_bucket_object.hash.body
+  source_code_hash = "${data.archive_file.zipit.output_base64sha256}"
   runtime       = "nodejs16.x"
 }
