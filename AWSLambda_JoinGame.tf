@@ -19,8 +19,8 @@ resource "aws_lambda_function" "join_game_lambda" {
   function_name = "join-game-1"
   ##s3_bucket     = aws_s3_bucket.function-bucket.id
   ##s3_key        = "join-game-1.zip"
-  ##role          = "arn:aws:iam::137312912338:role/service-role/game-server-role"
-  role            = "arn:aws:lambda:us-west-1:137312912338:function:join-game-1"
+  role          = "arn:aws:iam::137312912338:role/service-role/game-server-role"
+  ##role            = "arn:aws:lambda:us-west-1:137312912338:function:join-game-1"
   handler       = "index.handler"
   ##source_code_hash = "${filebase64sha256(local.lambda_join_game_zip_location)}"
   ##source_code_hash = data.aws_s3_bucket_object.hash.body
