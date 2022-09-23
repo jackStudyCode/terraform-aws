@@ -56,6 +56,6 @@ resource "aws_lambda_function" "test_lambda" {
   handler       = "hello.handler"
   ##source_code_hash = "${filebase64sha256(local.lambda_zip_location)}"
   ##source_code_hash = data.aws_s3_bucket_object.hash.body
-  source_code_hash = "${data.archive_file.zipit.output_base64sha256}"
+  source_code_hash = "${data.archive_file.init.output_base64sha256}"
   runtime       = "nodejs16.x"
 }
