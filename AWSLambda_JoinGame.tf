@@ -7,7 +7,8 @@ locals {
 
 data "archive_file" "init_join_game" {
   type        = "zip"
-  source_file = "${path.module}/join-game-1.js"
+  source_dir = "${path.module}/Project/JoinGame"
+  #source_file = "${path.module}/Project/JoinGame/join-game-1.js"
   output_path = "${path.module}/join-game-1.zip"
 }
 
