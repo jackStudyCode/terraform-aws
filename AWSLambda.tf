@@ -7,7 +7,7 @@ locals {
 
 data "archive_file" "init" {
   type        = "zip"
-  source_file = "${path.module}/hello.js"
+  source_file = "${path.module}/Project/hello.js"
   output_path = "${path.module}/hello.zip"
 }
 
