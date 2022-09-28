@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const ddb = new AWS.DynamoDB.DocumentClient();
+const {randomUUID} = require('crypto');
 require('./join-patch.js');
 let send = undefined;
 const TABLE_NAME = "game-session-1";
@@ -45,7 +46,8 @@ function addConnectionId(connectionId) {
             TableName: TABLE_NAME,
             Item: {
                // uuid: Date.now() + '', // dont do this, use a uuid generation library 
-               uuid: AWS.util.uuid.v4(),
+               // uuid: AWS.util.uuid.v4() + '',
+               uuid: randomUUID() + '',
                player1: connectionId,
                player2: "empty"
             },
