@@ -46,7 +46,8 @@ function addConnectionId(connectionId) {
             Item: {
                uuid: Date.now() + '',
                player1: connectionId,
-               player2: "empty"
+               player2: "empty",
+               gameStatus: "active"
             },
          }).promise();
       } else {
