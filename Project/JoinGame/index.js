@@ -45,8 +45,7 @@ function addConnectionId(connectionId) {
             TableName: TABLE_NAME,
             Item: {
                // uuid: Date.now() + '', // dont do this, use a uuid generation library 
-               // uuid: AWS.util.uuid.v4() + '',
-               uuid: "093d3400-00a2-4363-851c-4e2a45eff4ee",
+               uuid: AWS.util.uuid.v4(),
                player1: connectionId,
                player2: "empty"
             },
