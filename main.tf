@@ -9,7 +9,7 @@ terraform {
   }
 }
 
-provider "random" {}
+## provider "random" {}
 
 ## Provider us-west-1
 provider "aws" {
