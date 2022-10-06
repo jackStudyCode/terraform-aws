@@ -23,12 +23,6 @@ function init(event) {
    }
 }
 
-function getConnections() {
-   return ddb.scan({
-      TableName: TABLE_NAME,
-   }).promise();
-}
-
 function getGameSession(playerId) {
    return ddb.scan({
       TableName: TABLE_NAME,
